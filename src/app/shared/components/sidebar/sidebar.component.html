@@ -1,0 +1,7 @@
+<div class="sidebar-container">
+  <ul>
+    <li *ngFor="let item of sidebarLinks" routerLinkActive="active">
+      <a href="" [routerLink]="item.link">{{ item.title }}</a>
+    </li>
+  </ul>
+</div>

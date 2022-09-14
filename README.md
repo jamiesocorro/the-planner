@@ -27,3 +27,7 @@
 
 1. Unit testing - had an issue since I implemented Angular 14
 2. Havent used ngrx
+
+## Notes
+
+1. On Shift Templates - The start time and end time has limitation range is from 1 to 23 only for now.

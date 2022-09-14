@@ -6,14 +6,9 @@ import {
   ViewEncapsulation,
   ChangeDetectionStrategy,
 } from '@angular/core';
-// import { GenericModalComponent } from 'src/app/shared/components/modal/modal.component';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { IModal } from 'src/app/shared/models/modal';
 import { ModalSchedulerComponent } from '../modal-scheduler/modal-scheduler.component';
-import {
-  IShiftTemplates,
-  IShiftTemplate,
-} from 'src/app/shared/models/shift-templates';
+import { IShiftTemplate } from 'src/app/shared/models/shift-templates';
 import {
   ICalendarEvent,
   ICalendarEventInput,
@@ -21,8 +16,8 @@ import {
 import { PlanningService } from 'src/app/shared/services/planning/planning.service';
 import { Subject } from 'rxjs';
 import { EmployeesService } from 'src/app/shared/services/employees/employees.service';
-import { IEmployee } from 'src/app/shared/models/employees';
 import { ShiftTemplatesService } from 'src/app/shared/services/shift-templates/shift-templates.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'tp-planning',
   templateUrl: './planning.component.html',
@@ -41,7 +36,8 @@ export class PlanningComponent implements OnInit {
     public modalService: BsModalService,
     private planningService: PlanningService,
     private employeesService: EmployeesService,
-    private shiftTemplatesService: ShiftTemplatesService
+    private shiftTemplatesService: ShiftTemplatesService,
+    public router: Router
   ) {}
 
   ngOnInit(): void {
@@ -79,6 +75,10 @@ export class PlanningComponent implements OnInit {
 
     this.planningService.getSchedule();
 
-    this.refresh.next();
+    this.router
+      .navigateByUrl('/employees', { skipLocationChange: true })
+      .then(() => {
+        this.router.navigate(['planning']);
+      });
   }
 }

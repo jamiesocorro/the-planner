@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
 html {
   height: 100%;
 }
@@ -9,4 +10,73 @@ body {
   height: 100%;
   margin: 0px;
   font-family: sans-serif;
+
+  .modal-content {
+    border: none !important;
+
+    .modal-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-container {
+      display: flex;
+      flex-direction: column;
+      pointer-events: auto;
+      background-color: #fff;
+      background-clip: content-box !important;
+
+      border-radius: 5px;
+      outline: 0;
+
+      margin: 10px;
+
+      width: 300px;
+      background-color: white;
+      border: none;
+      box-shadow: 5px 0px 0px 1px grey;
+
+      .details {
+        padding: 10px;
+        .element-control {
+          margin: 10px 0px;
+
+          > label {
+            display: block;
+          }
+
+          .control {
+            padding: 5px;
+            width: 100%;
+          }
+        }
+
+        > .button-actions {
+          margin-top: 10px;
+          float: right;
+          .action {
+            margin-right: 10px;
+          }
+        }
+      }
+
+      .title {
+        background-color: #ffc107;
+        color: white;
+        font-weight: bold;
+        padding: 10px;
+      }
+
+      .items {
+        padding: 10px 0px;
+      }
+    }
+  }
 }

@@ -1,0 +1,18 @@
+.scheduler-container {
+  height: calc(100% - 300px);
+  position: relative;
+
+  .weekly-option {
+    margin: 10px 0px;
+
+    > div {
+      border-radius: 0px;
+      border: none;
+    }
+  }
+
+  .schedule {
+    height: 100%;
+    overflow: auto;
+  }
+}

@@ -1,0 +1,37 @@
+<div class="templates-container">
+  <div *ngIf="shiftTemplates.length === 0; else templateList">
+    <div class="templates">No shift templates yet</div>
+  </div>
+
+  <ng-template #templateList>
+    <div *ngFor="let template of shiftTemplates" class="templates">
+      <div class="templates-info">
+        <span> {{ template.name }}, </span>
+        <span>
+          {{ template.startTime }}
+        </span>
+        <span>
+          {{ template.endTime }}
+        </span>
+      </div>
+      <div class="actions">
+        <span>
+          <a (click)="showModal(updateEmployee)">Update</a>
+        </span>
+        <span> | </span>
+        <span>
+          <a (click)="deleteShiftTemplate(template.id)">Delete</a>
+        </span>
+      </div>
+
+      <ng-template #updateEmployee>
+        <tp-modal-template
+          (onFormClose)="closeModal()"
+          [title]="'Update employee'"
+          [type]="'update'"
+          [shiftTemplate]="template"
+        ></tp-modal-template>
+      </ng-template>
+    </div>
+  </ng-template>
+</div>

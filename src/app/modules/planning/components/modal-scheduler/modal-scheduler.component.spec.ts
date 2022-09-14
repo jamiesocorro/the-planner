@@ -1,20 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SidebarComponent } from './sidebar.component';
+import { ModalSchedulerComponent } from './modal-scheduler.component';
 
-describe('SidebarComponent', () => {
-  let component: SidebarComponent;
-  let fixture: ComponentFixture<SidebarComponent>;
+describe('ModalSchedulerComponent', () => {
+  let component: ModalSchedulerComponent;
+  let fixture: ComponentFixture<ModalSchedulerComponent>;
 
   // beforeEach(async () => {
   //   await TestBed.configureTestingModule({
-  //     declarations: [ SidebarComponent ]
+  //     declarations: [ ModalSchedulerComponent ]
   //   })
   //   .compileComponents();
-  // });
 
-  // beforeEach(() => {
-  //   fixture = TestBed.createComponent(SidebarComponent);
+  //   fixture = TestBed.createComponent(ModalSchedulerComponent);
   //   component = fixture.componentInstance;
   //   fixture.detectChanges();
   // });

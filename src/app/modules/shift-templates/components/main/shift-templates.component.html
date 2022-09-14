@@ -1,0 +1,27 @@
+<div class="shift-templates-container">
+  <tp-sidebar> </tp-sidebar>
+  <div class="shift-templates-details">
+    <h1>Shift Templates</h1>
+    <div class="header-action-container">
+      <div class="header-action">
+        <button class="btn btn-primary" (click)="openModal(addTemplate)">
+          Add shift template
+        </button>
+      </div>
+    </div>
+    <tp-template-list
+      [shiftTemplates]="shiftTemplates"
+      (onFormDelete)="delete($event)"
+      (onFormShow)="openModal($event)"
+    ></tp-template-list>
+  </div>
+  <ng-template #addTemplate>
+    <tp-modal-template
+      (onFormClose)="closeModal()"
+      [title]="'Add shift template'"
+      [shiftTemplatesCount]="shiftTemplates.length"
+    ></tp-modal-template>
+  </ng-template>
+</div>
+
+<!-- (onFormSave)="saveShiftTemplate($event)" -->

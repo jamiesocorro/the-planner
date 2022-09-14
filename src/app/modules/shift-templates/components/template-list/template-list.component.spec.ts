@@ -1,20 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SidebarComponent } from './sidebar.component';
+import { TemplateListComponent } from './template-list.component';
 
-describe('SidebarComponent', () => {
-  let component: SidebarComponent;
-  let fixture: ComponentFixture<SidebarComponent>;
+describe('TemplateListComponent', () => {
+  let component: TemplateListComponent;
+  let fixture: ComponentFixture<TemplateListComponent>;
 
   // beforeEach(async () => {
   //   await TestBed.configureTestingModule({
-  //     declarations: [ SidebarComponent ]
+  //     declarations: [ TemplateListComponent ]
   //   })
   //   .compileComponents();
-  // });
 
-  // beforeEach(() => {
-  //   fixture = TestBed.createComponent(SidebarComponent);
+  //   fixture = TestBed.createComponent(TemplateListComponent);
   //   component = fixture.componentInstance;
   //   fixture.detectChanges();
   // });

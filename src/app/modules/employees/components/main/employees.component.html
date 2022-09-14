@@ -1,0 +1,27 @@
+<div class="employees-container">
+  <tp-sidebar> </tp-sidebar>
+  <div class="employees-details">
+    <h1>Employees</h1>
+    <div class="header-action-container">
+      <div class="header-action">
+        <button class="btn btn-primary" (click)="openModal(addEmployee)">
+          Add employee
+        </button>
+      </div>
+    </div>
+    <tp-employee-list
+      [employees]="employees"
+      (onFormDelete)="delete($event)"
+      (onFormSave)="saveEmployee($event)"
+      (onFormShow)="openModal($event)"
+    ></tp-employee-list>
+  </div>
+  <ng-template #addEmployee>
+    <tp-modal-employee
+      (onFormSave)="saveEmployee($event)"
+      (onFormClose)="closeModal()"
+      [title]="'Add employee'"
+      [employeeCount]="employees.length"
+    ></tp-modal-employee>
+  </ng-template>
+</div>

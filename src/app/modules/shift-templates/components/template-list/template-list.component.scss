@@ -1,0 +1,29 @@
+.templates-container {
+  background: rgb(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px;
+  border-radius: 5px;
+
+  .templates {
+    display: flex;
+    padding: 20px;
+    background: white;
+    margin: 20px;
+    border-radius: 5px;
+
+    .templates-info {
+      width: 300px;
+      font-size: large;
+      font-weight: bold;
+    }
+
+    .actions {
+      margin-left: 10px;
+
+      a {
+        margin-right: 0px 10px;
+        cursor: pointer;
+      }
+    }
+  }
+}

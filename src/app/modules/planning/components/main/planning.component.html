@@ -1,0 +1,23 @@
+<div class="planning-container">
+  <tp-sidebar> </tp-sidebar>
+  <div class="planning-details">
+    <h1>Planner</h1>
+    <div class="header-action-container">
+      <div class="header-action">
+        <button class="btn btn-primary" (click)="openModal(addSchedule)">
+          Add schedule item
+        </button>
+      </div>
+    </div>
+    <tp-scheduler [sched]="schedules"></tp-scheduler>
+  </div>
+  <ng-template #addSchedule>
+    <tp-modal-scheduler
+      (onFormSave)="saveSchedule($event)"
+      (onFormClose)="closeModal()"
+      [title]="'Add schedule'"
+      [shiftTemplates]="shifts.shiftTemplates"
+      [employees]="employees"
+    ></tp-modal-scheduler>
+  </ng-template>
+</div>

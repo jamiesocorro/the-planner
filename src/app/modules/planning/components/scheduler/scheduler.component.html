@@ -1,0 +1,37 @@
+<div class="scheduler-container">
+  <div class="weekly-option">
+    <div
+      class="btn btn-primary"
+      mwlCalendarPreviousView
+      [view]="view"
+      [(viewDate)]="viewDate"
+    >
+      Previous
+    </div>
+    <div
+      class="btn btn-outline-secondary"
+      mwlCalendarToday
+      [(viewDate)]="viewDate"
+    >
+      Today
+    </div>
+    <div
+      class="btn btn-primary"
+      mwlCalendarNextView
+      [view]="view"
+      [(viewDate)]="viewDate"
+    >
+      Next
+    </div>
+  </div>
+
+  <div class="schedule">
+    <mwl-calendar-week-view
+      [viewDate]="viewDate"
+      [weekStartsOn]="1"
+      [events]="schedules"
+      [refresh]="refresh"
+    >
+    </mwl-calendar-week-view>
+  </div>
+</div>

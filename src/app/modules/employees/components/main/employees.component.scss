@@ -1,0 +1,24 @@
+.employees-container {
+  display: flex;
+  height: 100%;
+
+  .header-action-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+
+    .header-action {
+      align-self: flex-end;
+    }
+  }
+
+  tp-sidebar {
+    padding-right: 20px;
+    border-right: 1px solid;
+  }
+
+  .employees-details {
+    margin: 1em;
+    width: calc(100% - 200px);
+  }
+}

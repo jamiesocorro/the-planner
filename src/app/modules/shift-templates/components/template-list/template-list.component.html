@@ -9,18 +9,26 @@
         <span> {{ template.name }}, </span>
         <span>
           {{ template.startTime }}
+          <span *ngIf="template.startTime < 12">am</span>
+          <span *ngIf="template.startTime > 12">pm</span>
         </span>
         <span>
           {{ template.endTime }}
+          <span *ngIf="template.endTime < 12">am</span>
+          <span *ngIf="template.endTime > 12">pm</span>
         </span>
       </div>
       <div class="actions">
         <span>
-          <a (click)="showModal(updateEmployee)">Update</a>
+          <a (click)="showModal(updateEmployee)" class="btn btn-primary"
+            >Update</a
+          >
         </span>
         <span> | </span>
         <span>
-          <a (click)="deleteShiftTemplate(template.id)">Delete</a>
+          <a (click)="deleteShiftTemplate(template.id)" class="btn btn-danger"
+            >Delete</a
+          >
         </span>
       </div>
 

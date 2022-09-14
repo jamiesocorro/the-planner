@@ -6,16 +6,32 @@
     <form class="details" [formGroup]="form">
       <div>
         <div class="element-control">
-          <label> Name </label>
-          <input type="text" formControlName="name" class="control" />
+          <input
+            type="text"
+            formControlName="name"
+            class="control"
+            placeholder="Shift Name"
+          />
         </div>
         <div class="element-control">
-          <label> Start time </label>
-          <input type="text" formControlName="startTime" class="control" />
+          <input
+            type="number"
+            formControlName="startTime"
+            class="control"
+            min="0"
+            max="23"
+            placeholder="Start time"
+          />
         </div>
         <div class="element-control">
-          <label> End time </label>
-          <input type="text" formControlName="endTime" class="control" />
+          <input
+            type="number"
+            formControlName="endTime"
+            class="control"
+            min="0"
+            max="23"
+            placeholder="End time"
+          />
         </div>
       </div>
       <div class="button-actions">
@@ -27,6 +43,9 @@
             *ngIf="type !== 'update'"
             class="btn btn-primary"
             (click)="saveItem()"
+            [disabled]="
+              !(form.value.name && form.value.startTime && form.value.endTime)
+            "
           >
             Save
           </button>

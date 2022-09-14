@@ -4,44 +4,6 @@
   </div>
 
   <ng-template #employeeList>
-    <!-- <table>
-      <thead>
-        <td>Name</td>
-        <td>Manage</td>
-      </thead>
-      <tbody>
-        <tr *ngFor="let employee of employees" class="employees">
-          <td class="employee-info">
-            <span> {{ employee.lastName }}, </span>
-            <span>
-              {{ employee.firstName }}
-            </span>
-            <span>
-              {{ employee.middleName }}
-            </span>
-          </td>
-          <td class="actions">
-            <span>
-              <a (click)="showModal(updateEmployee)">Update</a>
-            </span>
-            <span> | </span>
-            <span>
-              <a (click)="deleteEmployee(employee.id)">Delete</a>
-            </span>
-          </td>
-          <ng-template #updateEmployee>
-            <tp-modal-employee
-              (onFormSave)="saveEmployee($event)"
-              (onFormClose)="closeModal()"
-              [title]="'Update employee'"
-              [type]="'update'"
-              [employeeCount]="employees.length"
-              [employee]="employee"
-            ></tp-modal-employee>
-          </ng-template>
-        </tr>
-      </tbody>
-    </table> -->
     <div *ngFor="let employee of employees" class="employees">
       <div class="employee-info">
         <span> {{ employee.lastName }}, </span>
@@ -54,11 +16,15 @@
       </div>
       <div class="actions">
         <span>
-          <a (click)="showModal(updateEmployee)">Update</a>
+          <a (click)="showModal(updateEmployee)" class="btn btn-primary"
+            >Update</a
+          >
         </span>
         <span> | </span>
         <span>
-          <a (click)="deleteEmployee(employee.id)">Delete</a>
+          <a (click)="deleteEmployee(employee.id)" class="btn btn-danger"
+            >Delete</a
+          >
         </span>
       </div>
 

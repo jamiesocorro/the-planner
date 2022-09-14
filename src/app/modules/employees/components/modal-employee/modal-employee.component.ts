@@ -21,13 +21,13 @@ export class ModalEmployeeComponent
   @Input() title: string = '';
   @Input() type: string = '';
   @Input() employeeCount: number = 0;
-  item: FormGroup = new FormGroup({});
+
   constructor(private employeesService: EmployeesService) {
     super();
   }
 
   initializeForm() {
-    this.item = new FormGroup({
+    this.form = new FormGroup({
       id: new FormControl<number | null>(0),
       firstName: new FormControl<string | null>(''),
       lastName: new FormControl<string | null>(''),
@@ -35,19 +35,19 @@ export class ModalEmployeeComponent
     });
 
     if (this.employee.id > 0) {
-      this.item.controls['id'].setValue(this.employee.id);
-      this.item.controls['firstName'].setValue(this.employee.firstName);
-      this.item.controls['lastName'].setValue(this.employee.lastName);
-      this.item.controls['middleName'].setValue(this.employee.middleName);
+      this.form.controls['id'].setValue(this.employee.id);
+      this.form.controls['firstName'].setValue(this.employee.firstName);
+      this.form.controls['lastName'].setValue(this.employee.lastName);
+      this.form.controls['middleName'].setValue(this.employee.middleName);
     }
   }
 
   transformData() {
     return {
       id: this.employeeCount + 1,
-      firstName: this.item.value['firstName'],
-      lastName: this.item.value['lastName'],
-      middleName: this.item.value['middleName'],
+      firstName: this.form.value['firstName'],
+      lastName: this.form.value['lastName'],
+      middleName: this.form.value['middleName'],
     };
   }
 
@@ -60,6 +60,6 @@ export class ModalEmployeeComponent
   }
 
   emitItem() {
-    this.employeesService.emitEmployee(this.item.value);
+    this.employeesService.emitEmployee(this.form.value);
   }
 }

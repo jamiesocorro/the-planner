@@ -48,13 +48,23 @@ body {
         .element-control {
           margin: 10px 0px;
 
-          > label {
+          label {
+            font-weight: bold;
             display: block;
           }
 
           .control {
             padding: 5px;
             width: 100%;
+          }
+
+          .column {
+            display: flex;
+            align-self: center;
+            > span {
+              width: 100%;
+              margin-right: 10px;
+            }
           }
         }
 

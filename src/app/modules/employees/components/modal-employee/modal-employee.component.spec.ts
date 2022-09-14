@@ -6,16 +6,16 @@ describe('ModalEmployeeComponent', () => {
   let component: ModalEmployeeComponent;
   let fixture: ComponentFixture<ModalEmployeeComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ ModalEmployeeComponent ]
-    })
-    .compileComponents();
+  // beforeEach(async () => {
+  //   await TestBed.configureTestingModule({
+  //     declarations: [ ModalEmployeeComponent ]
+  //   })
+  //   .compileComponents();
 
-    fixture = TestBed.createComponent(ModalEmployeeComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  //   fixture = TestBed.createComponent(ModalEmployeeComponent);
+  //   component = fixture.componentInstance;
+  //   fixture.detectChanges();
+  // });
 
   it('should create', () => {
     expect(component).toBeTruthy();

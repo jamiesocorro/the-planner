@@ -1,18 +1,21 @@
-<div class="modal-overlay" *ngIf="item">
+<div class="modal-overlay" *ngIf="form">
   <div class="modal-container">
     <div class="title">
       <label>{{ title }}</label>
     </div>
-    <form class="details" [formGroup]="item">
+    <form class="details" [formGroup]="form">
       <div>
         <div class="element-control">
-          <label> Date </label>
-          <input type="date" formControlName="date" class="control" />
+          <input
+            type="date"
+            formControlName="date"
+            class="control"
+            placeholder="Select date"
+          />
         </div>
         <div class="element-control">
-          <label> Shift </label>
           <select formControlName="shift" class="control">
-            <option value="" disabled selected>Select your option</option>
+            <option value="" disabled selected>Select shift template</option>
             <option
               *ngFor="let template of shiftTemplates"
               [ngValue]="template"
@@ -22,9 +25,8 @@
           </select>
         </div>
         <div class="element-control">
-          <label> Employee </label>
           <select formControlName="employee" class="control">
-            <option value="" disabled selected>Select your option</option>
+            <option value="" disabled selected>Select employee</option>
             <option *ngFor="let employee of employees" [value]="employee">
               {{ employee }}
             </option>
@@ -36,7 +38,15 @@
           <button class="btn btn-secondary" (click)="close()">Cancel</button>
         </span>
         <span class="action">
-          <button class="btn btn-primary" (click)="saveItem()">Save</button>
+          <button
+            class="btn btn-primary"
+            (click)="saveItem()"
+            [disabled]="
+              !(form.value.date && form.value.shift && form.value.employee)
+            "
+          >
+            Save
+          </button>
         </span>
       </div>
     </form>

@@ -14,6 +14,17 @@ export class ShiftTemplatesService {
     this.templateInformation.next(shiftTemplate);
   }
 
+  updateShiftTemplate(shiftTemplate: IShiftTemplate) {
+    const shiftTemplates = this.getShiftTemplates();
+    shiftTemplates[
+      shiftTemplates.findIndex((e) => e.id === shiftTemplate.id)
+    ] = shiftTemplate;
+
+    localStorage.setItem('shiftTemplates', JSON.stringify(this.shiftTemplates));
+
+    this.getShiftTemplates();
+  }
+
   deleteShiftTemplates(id: number) {
     const shiftTemplates = this.getShiftTemplates();
     shiftTemplates.splice(

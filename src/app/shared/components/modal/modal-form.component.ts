@@ -1,7 +1,5 @@
 import { OnInit, Output, EventEmitter, Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { IEmployee } from '../../models/employees';
-
 @Component({
   template: '',
 })
@@ -14,6 +12,5 @@ export abstract class ModalFormComponent implements OnInit {
   }
 
   abstract initializeForm(): any;
-
   abstract transformData(): any;
 }

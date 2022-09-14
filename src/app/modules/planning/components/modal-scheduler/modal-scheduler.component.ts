@@ -1,9 +1,6 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import {
-  IShiftTemplates,
-  IShiftTemplate,
-} from 'src/app/shared/models/shift-templates';
+import { IShiftTemplate } from 'src/app/shared/models/shift-templates';
 import { ModalFormComponent } from 'src/app/shared/components/modal/modal-form.component';
 import { ICalendarEvent } from 'src/app/shared/models/calendar-event';
 
@@ -18,25 +15,24 @@ export class ModalSchedulerComponent
   @Input() shiftTemplates: Array<IShiftTemplate> = [];
   @Input() employees: Array<string> = [];
   @Input() title = '';
-  item: FormGroup = new FormGroup({});
   constructor() {
     super();
   }
 
   initializeForm() {
-    this.item = new FormGroup({
-      date: new FormControl<Date | null>(new Date()),
-      shift: new FormControl<any | null>(null),
+    this.form = new FormGroup({
+      date: new FormControl<Date | null>(null),
+      shift: new FormControl<any | null>(''),
       employee: new FormControl<string | null>(''),
     });
   }
 
   transformData(): ICalendarEvent {
     return {
-      date: this.item.value['date'],
-      startTime: this.item.value['shift']['startTime'],
-      endTime: this.item.value['shift']['endTime'],
-      employee: this.item.value['employee'],
+      date: this.form.value['date'],
+      startTime: this.form.value['shift']['startTime'],
+      endTime: this.form.value['shift']['endTime'],
+      employee: this.form.value['employee'],
     };
   }
 

@@ -17,11 +17,10 @@
   </div>
   <ng-template #addTemplate>
     <tp-modal-template
+      (onFormSave)="saveShiftTemplate($event)"
       (onFormClose)="closeModal()"
       [title]="'Add shift template'"
       [shiftTemplatesCount]="shiftTemplates.length"
     ></tp-modal-template>
   </ng-template>
 </div>
-
-<!-- (onFormSave)="saveShiftTemplate($event)" -->

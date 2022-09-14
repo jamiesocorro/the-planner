@@ -21,17 +21,6 @@ export class SchedulerComponent implements OnInit {
   @Input() sched: Array<ICalendarEvent> = [];
   refresh = new Subject<void>();
   schedules: CalendarEvent[] = [];
-  // schedules: CalendarEvent[] = [
-  //   {
-  //     start: new Date(),
-  //     end: new Date(new Date().setHours(new Date().getHours() + 4)),
-  //     title: 'First event',
-  //   },
-  //   {
-  //     start: new Date(),
-  //     title: 'Second event',
-  //   },
-  // ];
   constructor() {}
 
   ngOnInit(): void {

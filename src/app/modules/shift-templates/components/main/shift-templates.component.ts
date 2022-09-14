@@ -15,7 +15,13 @@ export class ShiftTemplatesComponent implements OnInit {
     private shiftTemplatesService: ShiftTemplatesService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.shiftTemplatesService.currentInformation.subscribe(
+      (shiftTemplate: IShiftTemplate) => {
+        this.update(shiftTemplate);
+      }
+    );
+  }
 
   get shiftTemplates(): Array<IShiftTemplate> {
     return this.shiftTemplatesService.getShiftTemplates();
@@ -34,6 +40,11 @@ export class ShiftTemplatesComponent implements OnInit {
       template,
       Object.assign({}, { class: className })
     );
+  }
+
+  update(shiftTemplate: IShiftTemplate) {
+    this.shiftTemplatesService.updateShiftTemplate(shiftTemplate);
+    this.closeModal();
   }
 
   delete(templateId: number) {

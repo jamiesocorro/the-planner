@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { ICalendarEvent } from '../../models/calendar-event';
-import { Observable, of } from 'rxjs';
+import {
+  ICalendarEvent,
+  ICalendarEventInput,
+} from '../../models/calendar-event';
 
 @Injectable({
   providedIn: 'root',
@@ -9,25 +11,19 @@ export class PlanningService {
   schedules: Array<ICalendarEvent> = [];
   constructor() {}
 
-  save(data: ICalendarEvent) {
+  save(data: ICalendarEventInput) {
     if (data) {
       const date = new Date(data.date!);
-      const getStartTime = new Date(data.startTime).getHours();
-      const getEndTime = new Date(data.endTime).getHours();
-
       const item: ICalendarEvent = {
-        startTime: new Date(date.setHours(getStartTime)) || new Date(),
-        endTime: new Date(date.setHours(getEndTime)) || new Date(),
+        startTime:
+          new Date(date.setHours(data.startTime, 0, 0, 0)) || new Date(),
+        endTime: new Date(date.setHours(data.endTime, 0, 0, 0)) || new Date(),
         employee: data.employee || '',
       };
 
       this.schedules.push(item);
 
       localStorage.setItem('schedules', JSON.stringify(this.schedules));
-
-      // return Observable.of(this.schedules);
-
-      // return this.schedules;
     }
   }
 

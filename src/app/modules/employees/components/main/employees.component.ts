@@ -18,7 +18,7 @@ export class EmployeesComponent implements OnInit {
   ngOnInit(): void {
     this.employeesService.currentInformation.subscribe(
       (employee: IEmployee) => {
-        this.updateEmployee(employee);
+        this.update(employee);
       }
     );
   }
@@ -48,7 +48,7 @@ export class EmployeesComponent implements OnInit {
     this.closeModal();
   }
 
-  updateEmployee(employee: IEmployee) {
+  update(employee: IEmployee) {
     this.employeesService.updateEmployee(employee);
     this.closeModal();
   }

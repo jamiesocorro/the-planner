@@ -10,12 +10,19 @@ import {
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { IModal } from 'src/app/shared/models/modal';
 import { ModalSchedulerComponent } from '../modal-scheduler/modal-scheduler.component';
-import { IShiftTemplates } from 'src/app/shared/models/shift-templates';
-import { ICalendarEvent } from 'src/app/shared/models/calendar-event';
+import {
+  IShiftTemplates,
+  IShiftTemplate,
+} from 'src/app/shared/models/shift-templates';
+import {
+  ICalendarEvent,
+  ICalendarEventInput,
+} from 'src/app/shared/models/calendar-event';
 import { PlanningService } from 'src/app/shared/services/planning/planning.service';
 import { Subject } from 'rxjs';
 import { EmployeesService } from 'src/app/shared/services/employees/employees.service';
 import { IEmployee } from 'src/app/shared/models/employees';
+import { ShiftTemplatesService } from 'src/app/shared/services/shift-templates/shift-templates.service';
 @Component({
   selector: 'tp-planning',
   templateUrl: './planning.component.html',
@@ -25,38 +32,24 @@ import { IEmployee } from 'src/app/shared/models/employees';
 })
 export class PlanningComponent implements OnInit {
   modalRef?: BsModalRef;
-  // schedules: Array<ICalendarEvent> = [];
   employees: Array<string> = [];
   refresh = new Subject<void>();
-  shifts: IShiftTemplates = {
-    shiftTemplates: [
-      {
-        id: 1,
-        name: 'Morning',
-        startTime: new Date().setHours(8, 0, 0, 0),
-        endTime: new Date().setHours(16, 0, 0, 0),
-      },
-      {
-        id: 2,
-        name: 'Mid shift',
-        startTime: new Date().setHours(16, 0, 0, 0),
-        endTime: new Date().setHours(23, 59, 0, 0),
-      },
-    ],
-  };
+  shiftTemplates: Array<IShiftTemplate> = [];
   @ViewChild(ModalSchedulerComponent) modalComponent?: ModalSchedulerComponent;
 
   constructor(
     public modalService: BsModalService,
     private planningService: PlanningService,
-    private employeesService: EmployeesService
+    private employeesService: EmployeesService,
+    private shiftTemplatesService: ShiftTemplatesService
   ) {}
 
   ngOnInit(): void {
-    // this.schedules = this.planningService.getSchedule();
     this.employees = this.employeesService
       .getEmployees()
       .map((e) => `${e.lastName}, ${e.firstName} ${e.middleName}`);
+
+    this.shiftTemplates = this.shiftTemplatesService.getShiftTemplates();
     this.refresh.next();
   }
 
@@ -79,7 +72,7 @@ export class PlanningComponent implements OnInit {
     this.modalRef?.hide();
   }
 
-  saveSchedule(event: ICalendarEvent) {
+  saveSchedule(event: ICalendarEventInput) {
     this.planningService.save(event);
 
     this.closeModal();

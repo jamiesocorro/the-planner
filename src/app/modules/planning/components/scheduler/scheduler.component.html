@@ -1,37 +1,84 @@
 <div class="scheduler-container">
-  <div class="weekly-option">
-    <div
-      class="btn btn-primary"
-      mwlCalendarPreviousView
-      [view]="view"
-      [(viewDate)]="viewDate"
-    >
-      Previous
+  <div class="actions">
+    <div class="date-option">
+      <div
+        class="btn btn-success"
+        mwlCalendarPreviousView
+        [view]="view"
+        [(viewDate)]="viewDate"
+      >
+        Previous
+      </div>
+      <div
+        class="btn btn-outline-secondary"
+        mwlCalendarToday
+        [(viewDate)]="viewDate"
+      >
+        Today
+      </div>
+      <div
+        class="btn btn-success"
+        mwlCalendarNextView
+        [view]="view"
+        [(viewDate)]="viewDate"
+      >
+        Next
+      </div>
     </div>
-    <div
-      class="btn btn-outline-secondary"
-      mwlCalendarToday
-      [(viewDate)]="viewDate"
-    >
-      Today
-    </div>
-    <div
-      class="btn btn-primary"
-      mwlCalendarNextView
-      [view]="view"
-      [(viewDate)]="viewDate"
-    >
-      Next
+
+    <div>
+      <div class="col-md-4" class="date-option">
+        <div class="btn-group">
+          <div
+            class="btn btn-success"
+            (click)="setView(CalendarView.Month)"
+            [class.active]="view === CalendarView.Month"
+          >
+            Month
+          </div>
+          <div
+            class="btn btn-success"
+            (click)="setView(CalendarView.Week)"
+            [class.active]="view === CalendarView.Week"
+          >
+            Week
+          </div>
+          <div
+            class="btn btn-success"
+            (click)="setView(CalendarView.Day)"
+            [class.active]="view === CalendarView.Day"
+          >
+            Day
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
-  <div class="schedule">
+  <div class="text-center">
+    <h3>{{ viewDate | calendarDate: view + "ViewTitle":"en" }}</h3>
+  </div>
+  <div class="schedule" [ngSwitch]="view">
+    <mwl-calendar-month-view
+      *ngSwitchCase="CalendarView.Month"
+      [viewDate]="viewDate"
+      [events]="schedules"
+      [refresh]="refresh"
+    >
+    </mwl-calendar-month-view>
     <mwl-calendar-week-view
+      *ngSwitchCase="CalendarView.Week"
       [viewDate]="viewDate"
       [weekStartsOn]="1"
       [events]="schedules"
       [refresh]="refresh"
     >
     </mwl-calendar-week-view>
+    <mwl-calendar-day-view
+      *ngSwitchCase="CalendarView.Day"
+      [viewDate]="viewDate"
+      [events]="schedules"
+      [refresh]="refresh"
+    >
+    </mwl-calendar-day-view>
   </div>
 </div>

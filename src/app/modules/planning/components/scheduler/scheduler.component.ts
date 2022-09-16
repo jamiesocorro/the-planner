@@ -21,6 +21,7 @@ export class SchedulerComponent implements OnInit {
   @Input() sched: Array<ICalendarEvent> = [];
   refresh = new Subject<void>();
   schedules: CalendarEvent[] = [];
+  CalendarView = CalendarView;
   constructor() {}
 
   ngOnInit(): void {
@@ -40,5 +41,9 @@ export class SchedulerComponent implements OnInit {
       });
 
     this.refresh.next();
+  }
+
+  setView(view: CalendarView) {
+    this.view = view;
   }
 }

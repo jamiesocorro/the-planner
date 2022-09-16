@@ -8,16 +8,16 @@
           Add schedule item
         </button>
       </div>
+      <tp-scheduler [sched]="schedules"></tp-scheduler>
     </div>
-    <tp-scheduler [sched]="schedules"></tp-scheduler>
+    <ng-template #addSchedule>
+      <tp-modal-scheduler
+        (onFormSave)="save($event)"
+        (onFormClose)="closeModal()"
+        [title]="'Add schedule'"
+        [shiftTemplates]="shiftTemplates"
+        [employees]="employees"
+      ></tp-modal-scheduler>
+    </ng-template>
   </div>
-  <ng-template #addSchedule>
-    <tp-modal-scheduler
-      (onFormSave)="save($event)"
-      (onFormClose)="closeModal()"
-      [title]="'Add schedule'"
-      [shiftTemplates]="shiftTemplates"
-      [employees]="employees"
-    ></tp-modal-scheduler>
-  </ng-template>
 </div>

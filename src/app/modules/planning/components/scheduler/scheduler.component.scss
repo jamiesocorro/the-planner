@@ -1,13 +1,20 @@
 .scheduler-container {
-  height: calc(100% - 300px);
+  height: 600px;
   position: relative;
 
-  .weekly-option {
-    margin: 10px 0px;
+  .actions {
+    display: flex;
+    .date-option {
+      margin: 10px 0px;
 
-    > div {
-      border-radius: 0px;
-      border: none;
+      div {
+        border-radius: 0px;
+        border: none;
+      }
+    }
+
+    .date-option:first-child {
+      flex-grow: 1;
     }
   }
 

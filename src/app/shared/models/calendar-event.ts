@@ -3,6 +3,7 @@ export interface ICalendarEvent {
   startTime: Date;
   endTime: Date;
   employee: string;
+  draggable?: boolean;
 }
 
 export interface ICalendarEventInput {

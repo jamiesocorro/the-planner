@@ -35,6 +35,7 @@ export class SchedulerComponent implements OnInit {
           start: new Date(sch.startTime),
           end: new Date(sch.endTime),
           title: sch.employee,
+          draggable: true,
         };
 
         this.schedules.push(item);

@@ -1,11 +1,11 @@
-<div class="employees-container">
+<div class="list-container">
   <div *ngIf="employees.length === 0; else employeeList">
-    <div class="employees">No Employees yet</div>
+    <div class="list">No Employees yet</div>
   </div>
 
   <ng-template #employeeList>
-    <div *ngFor="let employee of employees" class="employees">
-      <div class="employee-info">
+    <div *ngFor="let employee of employees" class="list">
+      <div class="list-info">
         <span> {{ employee.lastName }}, </span>
         <span>
           {{ employee.firstName }}

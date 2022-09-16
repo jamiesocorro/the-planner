@@ -15,14 +15,19 @@ export class ShiftTemplatesService {
   }
 
   updateShiftTemplate(shiftTemplate: IShiftTemplate) {
-    const shiftTemplates = this.getShiftTemplates();
-    shiftTemplates[
-      shiftTemplates.findIndex((e) => e.id === shiftTemplate.id)
-    ] = shiftTemplate;
+    if (shiftTemplate) {
+      const shiftTemplates = this.getShiftTemplates();
+      shiftTemplates[
+        shiftTemplates.findIndex((e) => e.id === shiftTemplate.id)
+      ] = shiftTemplate;
 
-    localStorage.setItem('shiftTemplates', JSON.stringify(this.shiftTemplates));
+      localStorage.setItem(
+        'shiftTemplates',
+        JSON.stringify(this.shiftTemplates)
+      );
 
-    this.getShiftTemplates();
+      this.getShiftTemplates();
+    }
   }
 
   deleteShiftTemplates(id: number) {

@@ -28,12 +28,14 @@ export class EmployeesService {
   }
 
   updateEmployee(employee: IEmployee) {
-    const employees = this.getEmployees();
-    employees[employees.findIndex((e) => e.id === employee.id)] = employee;
+    if (employee) {
+      const employees = this.getEmployees();
+      employees[employees.findIndex((e) => e.id === employee.id)] = employee;
 
-    localStorage.setItem('employees', JSON.stringify(this.employees));
+      localStorage.setItem('employees', JSON.stringify(this.employees));
 
-    this.getEmployees();
+      this.getEmployees();
+    }
   }
 
   deleteEmployee(id: number) {

@@ -1,11 +1,11 @@
-<div class="templates-container">
+<div class="list-container">
   <div *ngIf="shiftTemplates.length === 0; else templateList">
-    <div class="templates">No shift templates yet</div>
+    <div class="list">No shift templates yet</div>
   </div>
 
   <ng-template #templateList>
-    <div *ngFor="let template of shiftTemplates" class="templates">
-      <div class="templates-info">
+    <div *ngFor="let template of shiftTemplates" class="list">
+      <div class="list-info">
         <span> {{ template.name }}, </span>
         <span>
           {{ template.startTime }}

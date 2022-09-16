@@ -11,7 +11,7 @@ export class PlanningService {
   schedules: Array<ICalendarEvent> = [];
   constructor() {}
 
-  save(data: ICalendarEventInput) {
+  saveSchedule(data: ICalendarEventInput) {
     if (data) {
       const date = new Date(data.date!);
       const item: ICalendarEvent = {

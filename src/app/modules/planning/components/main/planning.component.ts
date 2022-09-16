@@ -68,8 +68,8 @@ export class PlanningComponent implements OnInit {
     this.modalRef?.hide();
   }
 
-  saveSchedule(event: ICalendarEventInput) {
-    this.planningService.save(event);
+  save(event: ICalendarEventInput) {
+    this.planningService.saveSchedule(event);
 
     this.closeModal();
 

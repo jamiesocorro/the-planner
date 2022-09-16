@@ -13,7 +13,7 @@
   </div>
   <ng-template #addSchedule>
     <tp-modal-scheduler
-      (onFormSave)="saveSchedule($event)"
+      (onFormSave)="save($event)"
       (onFormClose)="closeModal()"
       [title]="'Add schedule'"
       [shiftTemplates]="shiftTemplates"

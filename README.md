@@ -32,3 +32,9 @@
 
 1. On Shift Templates - The start time and end time has limitation range is from 1 to 23 only for now.
 2. Added updated branch for updates. see updated-features branch
+
+## Steps in creating a schedule
+
+1. Create an employee on employee page.
+2. Create a shift template on the shift template page. just choose start time and end time from 1 to 23.
+3. You can now create a schedule on the planning page since you have an employee and a shift template.

@@ -10,8 +10,40 @@ export class ShiftTemplatesService {
   shiftTemplates: Array<IShiftTemplate> = [];
   constructor() {}
 
+  deleteShiftTemplates(id: number) {
+    const shiftTemplates = this.getShiftTemplates();
+    shiftTemplates.splice(
+      shiftTemplates.findIndex((e) => e.id == id),
+      1
+    );
+    localStorage.setItem('shiftTemplates', JSON.stringify(shiftTemplates));
+
+    this.getShiftTemplates();
+  }
+
   emitShiftTemplate(shiftTemplate: IShiftTemplate) {
     this.templateInformation.next(shiftTemplate);
+  }
+
+  getShiftTemplates(): Array<IShiftTemplate> {
+    let obj = JSON.parse(localStorage.getItem('shiftTemplates')!);
+    return (this.shiftTemplates = obj || []);
+  }
+
+  saveShiftTemplate(data: IShiftTemplate) {
+    if (data) {
+      const item: IShiftTemplate = {
+        id: data.id,
+        startTime: data.startTime,
+        endTime: data.endTime,
+        name: data.name,
+      };
+      this.shiftTemplates.push(item);
+      localStorage.setItem(
+        'shiftTemplates',
+        JSON.stringify(this.shiftTemplates)
+      );
+    }
   }
 
   updateShiftTemplate(shiftTemplate: IShiftTemplate) {
@@ -28,37 +60,5 @@ export class ShiftTemplatesService {
 
       this.getShiftTemplates();
     }
-  }
-
-  deleteShiftTemplates(id: number) {
-    const shiftTemplates = this.getShiftTemplates();
-    shiftTemplates.splice(
-      shiftTemplates.findIndex((e) => e.id == id),
-      1
-    );
-    localStorage.setItem('shiftTemplates', JSON.stringify(shiftTemplates));
-
-    this.getShiftTemplates();
-  }
-
-  save(data: IShiftTemplate) {
-    if (data) {
-      const item: IShiftTemplate = {
-        id: data.id,
-        startTime: data.startTime,
-        endTime: data.endTime,
-        name: data.name,
-      };
-      this.shiftTemplates.push(item);
-      localStorage.setItem(
-        'shiftTemplates',
-        JSON.stringify(this.shiftTemplates)
-      );
-    }
-  }
-
-  getShiftTemplates(): Array<IShiftTemplate> {
-    let obj = JSON.parse(localStorage.getItem('shiftTemplates')!);
-    return (this.shiftTemplates = obj || []);
   }
 }

@@ -18,7 +18,7 @@ export class ShiftTemplatesComponent implements OnInit {
   ngOnInit(): void {
     this.shiftTemplatesService.currentInformation.subscribe(
       (shiftTemplate: IShiftTemplate) => {
-        this.update(shiftTemplate);
+        if (shiftTemplate) this.update(shiftTemplate);
       }
     );
   }
@@ -51,9 +51,8 @@ export class ShiftTemplatesComponent implements OnInit {
     this.shiftTemplatesService.deleteShiftTemplates(templateId);
   }
 
-  saveShiftTemplate(event: IShiftTemplate) {
-    this.shiftTemplatesService.save(event);
-
+  save(event: IShiftTemplate) {
+    this.shiftTemplatesService.saveShiftTemplate(event);
     this.closeModal();
   }
 }

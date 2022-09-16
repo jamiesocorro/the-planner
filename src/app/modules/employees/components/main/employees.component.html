@@ -12,13 +12,13 @@
     <tp-employee-list
       [employees]="employees"
       (onFormDelete)="delete($event)"
-      (onFormSave)="saveEmployee($event)"
+      (onFormSave)="save($event)"
       (onFormShow)="openModal($event)"
     ></tp-employee-list>
   </div>
   <ng-template #addEmployee>
     <tp-modal-employee
-      (onFormSave)="saveEmployee($event)"
+      (onFormSave)="save($event)"
       (onFormClose)="closeModal()"
       [title]="'Add employee'"
       [employeeCount]="employees.length"

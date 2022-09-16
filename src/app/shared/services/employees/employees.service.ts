@@ -10,21 +10,39 @@ export class EmployeesService {
   employees: Array<IEmployee> = [];
   constructor() {}
 
-  save(data: IEmployee) {
-    if (data) {
-      const item: IEmployee = {
-        id: data.id,
-        firstName: data.firstName,
-        lastName: data.lastName,
-        middleName: data.middleName,
-      };
-      this.employees.push(item);
-      localStorage.setItem('employees', JSON.stringify(this.employees));
+  deleteEmployee(employeeId: number) {
+    if (employeeId >= 0) {
+      const employees = this.getEmployees();
+      employees.splice(
+        employees.findIndex((e) => e.id == employeeId),
+        1
+      );
+      localStorage.setItem('employees', JSON.stringify(employees));
+
+      this.getEmployees();
     }
   }
 
   emitEmployee(employee: IEmployee) {
     this.employeeInformation.next(employee);
+  }
+
+  getEmployees(): Array<IEmployee> {
+    let obj = JSON.parse(localStorage.getItem('employees')!);
+    return (this.employees = obj || []);
+  }
+
+  saveEmployee(employee: IEmployee) {
+    if (employee) {
+      const item: IEmployee = {
+        id: employee.id,
+        firstName: employee.firstName,
+        lastName: employee.lastName,
+        middleName: employee.middleName,
+      };
+      this.employees.push(item);
+      localStorage.setItem('employees', JSON.stringify(this.employees));
+    }
   }
 
   updateEmployee(employee: IEmployee) {
@@ -36,21 +54,5 @@ export class EmployeesService {
 
       this.getEmployees();
     }
-  }
-
-  deleteEmployee(id: number) {
-    const employees = this.getEmployees();
-    employees.splice(
-      employees.findIndex((e) => e.id == id),
-      1
-    );
-    localStorage.setItem('employees', JSON.stringify(employees));
-
-    this.getEmployees();
-  }
-
-  getEmployees(): Array<IEmployee> {
-    let obj = JSON.parse(localStorage.getItem('employees')!);
-    return (this.employees = obj || []);
   }
 }

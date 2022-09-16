@@ -17,7 +17,7 @@
   </div>
   <ng-template #addTemplate>
     <tp-modal-template
-      (onFormSave)="saveShiftTemplate($event)"
+      (onFormSave)="save($event)"
       (onFormClose)="closeModal()"
       [title]="'Add shift template'"
       [shiftTemplatesCount]="shiftTemplates.length"

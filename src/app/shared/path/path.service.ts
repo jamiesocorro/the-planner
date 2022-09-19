@@ -4,12 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class PathService {
-  // appRoot = '/app';
+  appRoot = '/app';
 
-  // planning = `${this.appRoot}/planning`;
-  // employees = `${this.appRoot}/employees`;
-  // shiftTemplates = `${this.appRoot}/shift-templates`;
-  planning = `/planning`;
-  employees = `/employees`;
-  shiftTemplates = `/shift-templates`;
+  planning = `${this.appRoot}/planning`;
+  employees = `${this.appRoot}/employees`;
+  shiftTemplates = `${this.appRoot}/shift-templates`;
 }

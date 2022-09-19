@@ -14,7 +14,6 @@ import {
   ICalendarEventInput,
 } from 'src/app/shared/models/calendar-event';
 import { PlanningService } from 'src/app/shared/services/planning/planning.service';
-import { Subject } from 'rxjs';
 import { EmployeesService } from 'src/app/shared/services/employees/employees.service';
 import { ShiftTemplatesService } from 'src/app/shared/services/shift-templates/shift-templates.service';
 import { Router } from '@angular/router';
@@ -28,7 +27,6 @@ import { Router } from '@angular/router';
 export class PlanningComponent implements OnInit {
   modalRef?: BsModalRef;
   employees: Array<string> = [];
-  refresh = new Subject<void>();
   shiftTemplates: Array<IShiftTemplate> = [];
   @ViewChild(ModalSchedulerComponent) modalComponent?: ModalSchedulerComponent;
 
@@ -46,7 +44,6 @@ export class PlanningComponent implements OnInit {
       .map((e) => `${e.lastName}, ${e.firstName} ${e.middleName}`);
 
     this.shiftTemplates = this.shiftTemplatesService.getShiftTemplates();
-    this.refresh.next();
   }
 
   get schedules(): Array<ICalendarEvent> {
@@ -75,10 +72,9 @@ export class PlanningComponent implements OnInit {
 
     this.planningService.getSchedule();
 
-    this.router
-      .navigateByUrl('/employees', { skipLocationChange: true })
-      .then(() => {
-        this.router.navigate(['planning']);
-      });
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
   }
 }

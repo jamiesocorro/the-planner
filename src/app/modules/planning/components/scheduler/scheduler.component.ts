@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import { CalendarView, CalendarEvent } from 'angular-calendar';
 import { ICalendarEvent } from 'src/app/shared/models/calendar-event';
-import { Subject } from 'rxjs';
 @Component({
   selector: 'tp-scheduler',
   templateUrl: './scheduler.component.html',
@@ -19,7 +18,6 @@ export class SchedulerComponent implements OnInit {
   viewDate: Date = new Date();
   view: CalendarView = CalendarView.Week;
   @Input() sched: Array<ICalendarEvent> = [];
-  refresh = new Subject<void>();
   schedules: CalendarEvent[] = [];
   CalendarView = CalendarView;
   constructor() {}
@@ -40,8 +38,6 @@ export class SchedulerComponent implements OnInit {
 
         this.schedules.push(item);
       });
-
-    this.refresh.next();
   }
 
   setView(view: CalendarView) {

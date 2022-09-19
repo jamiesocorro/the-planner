@@ -5,10 +5,20 @@ import { EmployeesComponent } from './modules/employees/components/main/employee
 import { ShiftTemplatesComponent } from './modules/shift-templates/components/main/shift-templates.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'planning', pathMatch: 'full' },
-  { path: 'planning', component: PlanningComponent },
-  { path: 'employees', component: EmployeesComponent },
-  { path: 'shift-templates', component: ShiftTemplatesComponent },
+  {
+    path: 'app',
+    redirectTo: '/app/planning',
+    pathMatch: 'full',
+  },
+  {
+    path: 'app',
+    children: [
+      { path: '', redirectTo: 'planning', pathMatch: 'full' },
+      { path: 'planning', component: PlanningComponent },
+      { path: 'employees', component: EmployeesComponent },
+      { path: 'shift-templates', component: ShiftTemplatesComponent },
+    ],
+  },
 ];
 
 @NgModule({

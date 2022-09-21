@@ -32,6 +32,7 @@
 
 1. On Shift Templates - The start time and end time has limitation range is from 1 to 23 only for now.
 2. Added updated branch for updates. see updated-features branch
+3. Implemented lazy loading on routing updated-features branch
 
 ## Steps in creating a schedule
 

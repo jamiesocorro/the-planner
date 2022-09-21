@@ -7,7 +7,7 @@ import { ModalTemplateComponent } from './components/modal-template/modal-templa
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { ShiftTemplatesRoutingModule } from './shift-templates.routes.module';
 @NgModule({
   declarations: [
     ShiftTemplatesComponent,
@@ -17,9 +17,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     SidebarModule,
-    BrowserAnimationsModule,
     ModalModule.forRoot(),
     ReactiveFormsModule,
+    ShiftTemplatesRoutingModule,
   ],
 })
 export class ShiftTemplatesModule {}

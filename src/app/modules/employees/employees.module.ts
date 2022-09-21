@@ -7,6 +7,7 @@ import { ModalEmployeeComponent } from './components/modal-employee/modal-employ
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EmployeesRoutingModule } from './employees.routes.module';
 
 @NgModule({
   declarations: [
@@ -17,9 +18,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     SidebarModule,
-    BrowserAnimationsModule,
     ModalModule.forRoot(),
     ReactiveFormsModule,
+    EmployeesRoutingModule,
   ],
 })
 export class EmployeesModule {}

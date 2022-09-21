@@ -9,7 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 import { ModalSchedulerComponent } from './components/modal-scheduler/modal-scheduler.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { RouterModule, Routes } from '@angular/router';
+import { PlanningRoutingModule } from './planning.routes.module';
 @NgModule({
   declarations: [
     PlanningComponent,
@@ -23,9 +24,9 @@ import { ReactiveFormsModule } from '@angular/forms';
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
-    BrowserAnimationsModule,
     ModalModule.forRoot(),
     ReactiveFormsModule,
+    PlanningRoutingModule,
   ],
   providers: [BsModalService],
 })

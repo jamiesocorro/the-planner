@@ -9,12 +9,16 @@
           <input
             type="date"
             formControlName="date"
-            class="control"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Select date"
           />
         </div>
         <div class="element-control">
-          <select formControlName="shift" class="control">
+          <select
+            formControlName="shift"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
+            >
             <option value="" disabled selected>Select shift template</option>
             <option
               *ngFor="let template of shiftTemplates"
@@ -25,7 +29,11 @@
           </select>
         </div>
         <div class="element-control">
-          <select formControlName="employee" class="control">
+          <select
+            formControlName="employee"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
+            >
             <option value="" disabled selected>Select employee</option>
             <option *ngFor="let employee of employees" [value]="employee">
               {{ employee }}

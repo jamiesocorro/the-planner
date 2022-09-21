@@ -1,10 +1,13 @@
 <div class="employees-container">
   <tp-sidebar> </tp-sidebar>
   <div class="employees-details">
-    <h1>Employees</h1>
+    <h1 class="text-3xl font-bold">Employees</h1>
     <div class="header-action-container">
       <div class="header-action">
-        <button class="btn btn-primary" (click)="openModal(addEmployee)">
+        <button
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          (click)="openModal(addEmployee)"
+        >
           Add employee
         </button>
       </div>

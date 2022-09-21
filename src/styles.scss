@@ -2,6 +2,9 @@
 
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 html {
   height: 100%;
 }
@@ -34,11 +37,17 @@ body {
       }
 
       .actions {
+        display: flex;
         margin-left: 10px;
 
-        a {
-          margin-right: 0px 10px;
-          cursor: pointer;
+        span {
+          margin: 0px 5px;
+          a {
+            margin-right: 0px 10px;
+            svg {
+              cursor: pointer;
+            }
+          }
         }
       }
     }

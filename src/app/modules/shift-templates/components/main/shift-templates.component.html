@@ -1,10 +1,13 @@
 <div class="shift-templates-container">
   <tp-sidebar> </tp-sidebar>
   <div class="shift-templates-details">
-    <h1>Shift Templates</h1>
+    <h1 class="text-3xl font-bold">Shift Templates</h1>
     <div class="header-action-container">
       <div class="header-action">
-        <button class="btn btn-primary" (click)="openModal(addTemplate)">
+        <button
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          (click)="openModal(addTemplate)"
+        >
           Add shift template
         </button>
       </div>
@@ -13,6 +16,7 @@
       [shiftTemplates]="shiftTemplates"
       (onFormDelete)="delete($event)"
       (onFormShow)="openModal($event)"
+      (onFormCancel)="closeModal()"
     ></tp-template-list>
   </div>
   <ng-template #addTemplate>
